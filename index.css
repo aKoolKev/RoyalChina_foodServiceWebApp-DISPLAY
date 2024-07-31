@@ -1,0 +1,13 @@
+/* format images in the image database */
+.database-images{
+    margin-left: 20px;
+    padding: 0;
+    height: 200px;
+    width: auto;
+}
+
+/* align image with li text */
+.order-li-el{
+    display: flex;
+    align-items: center;
+}
