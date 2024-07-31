@@ -3,7 +3,7 @@ const ordersContainer = document.getElementById('orders-container');
 const imgDB = new Map();
 
 function fetchOrders() {
-    //ORDERS -> order -> [order object]
+    //Path structure: ORDER -> uniqueID -> order[]
     database.ref('ORDERS').on('value', (snapshot) => {
         const orders = snapshot.val();
         ordersContainer.innerHTML = '';  // Clear previous orders
@@ -66,9 +66,26 @@ function removeOrder(orderId){
 
 
 
+//initialize the database (map) holding the item's image url
 function loadImgDatabase(){
     // (itemName: imgURl)
+    // appetizer images
     imgDB.set('Spring Roll', 'imgURL_DB/springRoll.jpg');
+    imgDB.set('Roast Pork Egg Roll', 'imgURL_DB/eggRoll.jpg');
+    imgDB.set('Chicken Teriyaki', 'imgURL_DB/chickenTeriyaki.jpg');
+    imgDB.set('Fried Dumpling', 'imgURL_DB/friedDumpling.jpg');
+    imgDB.set('Steam Dumpling', 'imgURL_DB/steamedDumpling.jpg');
+    imgDB.set('Steam Dumpling', 'imgURL_DB/steamedDumpling.jpg');
+    imgDB.set('Steam Dumpling', 'imgURL_DB/steamedDumpling.jpg');
+    imgDB.set('Crab Rangoon (x5)', 'imgURL_DB/crabRangoon.jpg');
+    imgDB.set('Crab Rangoon (x10)', 'imgURL_DB/crabRangoon.jpg');
+    imgDB.set('Boneless Spare Ribs', 'imgURL_DB/bonelessSpareRibs.jpg');
+    imgDB.set('Chicken Nuggets', 'imgURL_DB/chickenNuggets.jpg');
+    imgDB.set('Sugar Biscuit', 'imgURL_DB/sugarBiscuit.jpg');
+    imgDB.set('Fried Wonton', 'imgURL_DB/friedWonton.jpg');
+    imgDB.set('Fried Baby Shrimp', 'imgURL_DB/friedBabyShrimp.jpg');
+    imgDB.set('Mozarella Cheese Sticks', 'imgURL_DB/mozarellaCheeseSticks.jpg');
+    imgDB.set('Crab Stick', 'imgURL_DB/crabStick.jpg');
 }
 
 
