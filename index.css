@@ -11,3 +11,10 @@
     display: flex;
     align-items: center;
 }
+
+.order-ul-el{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+}

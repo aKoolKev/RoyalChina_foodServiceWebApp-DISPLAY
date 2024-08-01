@@ -11,7 +11,7 @@ function fetchOrders() {
 
         for (let orderId in orders) {
             const order_ulEl = document.createElement('ul');
-            
+            order_ulEl.className = "order-ul-el";
             const order = orders[orderId].order; //an order array holding all the orders
 
             // iterate through order array
