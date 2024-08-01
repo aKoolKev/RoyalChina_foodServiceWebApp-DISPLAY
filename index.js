@@ -14,12 +14,48 @@ function fetchOrders() {
             order_ulEl.className = "order-ul-el";
             const order = orders[orderId].order; //an order array holding all the orders
 
+            // let fiveCountCrabRangoon;
+            // let tenCountCrabRangoon;
+
+            // if (order.findIndex(order => order.name === "Crab Rangoon (x5)") !== -1){
+            //     fiveCountCrabRangoon = order.find(order => order.name === "Crab Rangoon (x5)");
+            // }
+            // if (order.findIndex(order => order.name === "Crab Rangoon (x10)") !== -1){
+            //     tenCountCrabRangoon = order.find(order => order.name === "Crab Rangoon (x10)");
+            // }
+
+            // const totalCrabRangoon = fiveCountCrabRangoon.quanity + tenCountCrabRangoon.quanity;
+
+            let fiveCountCrabRangoon = order.find(item => item.name === "Crab Rangoon (x5)");
+let tenCountCrabRangoon = order.find(item => item.name === "Crab Rangoon (x10)");
+
+let totalCrabRangoon = 0;
+
+if (fiveCountCrabRangoon) {
+    totalCrabRangoon += fiveCountCrabRangoon.quanity*5;
+}
+
+if (tenCountCrabRangoon) {
+    totalCrabRangoon += tenCountCrabRangoon.quanity*10;
+}
+
+console.log(totalCrabRangoon);
+
+            let crabVisited = false;
+
             // iterate through order array
             for (let i=0; i<order.length;i++){
                 //Diplay the order name and quanity on their own line
                 const order_liEl = document.createElement('li');
                 order_liEl.className = 'order-li-el';
-                order_liEl.append(document.createTextNode(order[i].name), document.createTextNode(" [" + order[i].quanity + "]\n"));
+                if (!crabVisited){
+                    if (order[i].name === "Crab Rangoon (x5)" || order[i].name === "Crab Rangoon (x10)" ){
+                        crabVisited = true;
+                        order_liEl.append(document.createTextNode("Crab Rangoon"), document.createTextNode(" [" + totalCrabRangoon + "]\n"));
+                    }
+                } else {
+                    order_liEl.append(document.createTextNode(order[i].name), document.createTextNode(" [" + order[i].quanity + "]\n"));
+                }
 
                 // display the item image
                 const order_imgEl = document.createElement('img');
