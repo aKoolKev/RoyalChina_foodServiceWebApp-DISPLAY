@@ -3,7 +3,7 @@ const ordersContainer = document.getElementById('orders-container');
 const imgDB = new Map();
 
 function fetchOrders() {
-    //Path structure: ORDER -> uniqueID -> order[]
+    //Path structure: ORDER -> uniqueID -> order[ orderObj ]
     database.ref('ORDERS').on('value', (snapshot) => {
         const orders = snapshot.val();
         ordersContainer.innerHTML = '';  // Clear previous orders
@@ -16,10 +16,13 @@ function fetchOrders() {
 
             // iterate through order array
             for (let i=0; i<order.length;i++){
-                //Diplay the order name and quanity on their own line
+                //Diplay the order name, quanity, and size on their own line
                 const order_liEl = document.createElement('li');
                 order_liEl.className = 'order-li-el';
                 order_liEl.append(document.createTextNode(order[i].name), document.createTextNode(" [" + order[i].quanity + "]\n"));
+                if (order[i].size){
+                    order_liEl.appendChild(document.createTextNode('(' + (order[i].size).toUpperCase() +')'));
+                }
 
 
                 // display the item image
