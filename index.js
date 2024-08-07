@@ -16,14 +16,35 @@ function fetchOrders() {
 
             // iterate through order array
             for (let i=0; i<order.length;i++){
-                //Diplay the order name, quanity, and size on their own line
+                // display the order details their own line
                 const order_liEl = document.createElement('li');
                 order_liEl.className = 'order-li-el';
+                
+                // display order name and [quanity]
                 order_liEl.append(document.createTextNode(order[i].name), document.createTextNode(" [" + order[i].quanity + "]\n"));
+
+                // display (order size)
                 if (order[i].size){
                     order_liEl.appendChild(document.createTextNode('(' + (order[i].size).toUpperCase() +')'));
                 }
 
+                // display any sides if it is a combo/lunch dish
+                if ( (order[i].numCR + order[i].numER) > 0){
+                    //this is a combo/lunch
+                    
+                    //....display any Crab Rangoon
+                    if (order[i].numCR > 0){
+                        order_liEl.appendChild(document.createTextNode(' . . . . . . CR: ' + '(' + order[i].numCR + ')' ) );
+// NEED TO DISPLAY CRAB RANGOON IMG ...should be a stand-alone function                  
+                    }
+
+
+                     //....display any Egg Roll
+                    if (order[i].numER > 0){
+                        order_liEl.appendChild(document.createTextNode(' . . . . . ER: ' + '(' + order[i].numER + ')' ) );
+// NEED TO DISPLAY EGG ROLL IMG ...should be a stand-alone function                  
+                    }
+                }
 
                 // display the item image
                 const order_imgEl = document.createElement('img');
@@ -48,7 +69,7 @@ function fetchOrders() {
             
             ordersContainer.appendChild(order_ulEl);
             ordersContainer.appendChild(document.createElement('hr'));
-            // orderDiv.textContent = order.join(', ');
+        
         }
     });
 }
