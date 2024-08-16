@@ -49,7 +49,7 @@ function fetchOrders() {
                 }
 
                 // display the item image
-                if ( (order[i].name).includes("Fried Rice") && !order[i].name.includes("House Special")){
+                if ( order[i].name.includes("Fried Rice")  &&  !order[i].name.includes("House Special")){
                     const rice_imgEl = document.createElement('img');
                     const riceType_imgEl = document.createElement('img');
                     
@@ -62,6 +62,21 @@ function fetchOrders() {
                     riceType_imgEl.className = 'database-images';
                      
                     order_liEl.append(rice_imgEl, riceType_imgEl);
+                    order_ulEl.appendChild(order_liEl);
+                } else if ( order[i].name.includes("Lo Mein") && !(order[i].name.includes("Plain") || order[i].name.includes("House Special")) ){
+            
+                    const noodle_imgEl = document.createElement('img');
+                    const noodleType_imgEl = document.createElement('img');
+                    
+                    const noodleObj = imgDB.get(order[i].name);
+
+                    noodle_imgEl.src = noodleObj.noodleImg;
+                    noodle_imgEl.className = 'database-images';
+
+                    noodleType_imgEl.src = noodleObj.typeImg;
+                    noodleType_imgEl.className = 'database-images';
+                    
+                    order_liEl.append(noodle_imgEl, noodleType_imgEl);
                     order_ulEl.appendChild(order_liEl);
                 } else {
                     const order_imgEl = document.createElement('img');
@@ -150,6 +165,21 @@ function loadImgDatabase(){
     imgDB.set('Shrimp Fried Rice', SFR);
     imgDB.set('Beef Fried Rice', BFR);
     imgDB.set('House Special Fried Rice', 'imgURL_DB/houseSpecialFriedRice.jpg');
+
+    //lo mein image;
+    const VLM = {noodleImg:'imgURL_DB/loMein.jpg', typeImg: 'imgURL_DB/vegetableIcon.jpg'};
+    const PLM = {noodleImg:'imgURL_DB/loMein.jpg', typeImg: 'imgURL_DB/porkIcon.jpg'};
+    const CLM = {noodleImg:'imgURL_DB/loMein.jpg', typeImg: 'imgURL_DB/chickenIcon.jpg'}
+    const SLM = {noodleImg:'imgURL_DB/loMein.jpg', typeImg: 'imgURL_DB/shrimpIcon.jpg'};
+    const BLM = {noodleImg:'imgURL_DB/loMein.jpg', typeImg: 'imgURL_DB/beefIcon.jpg'};
+
+    imgDB.set('Plain Lo Mein', 'imgURL_DB/loMein.jpg');
+    imgDB.set('Vegetable Lo Mein', VLM);
+    imgDB.set('Roast Pork Lo Mein', PLM);
+    imgDB.set('Chicken Lo Mein', CLM);
+    imgDB.set('Shrimp Lo Mein', SLM);
+    imgDB.set('Beef Lo Mein', BLM);
+    imgDB.set('House Special Lo Mein', 'imgURL_DB/houseSpecialLoMein.jpg');
 
 }
 
