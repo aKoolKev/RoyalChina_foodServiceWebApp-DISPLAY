@@ -25,7 +25,9 @@ function fetchOrders() {
 
                 // display (order size)
                 if (order[i].size){
-                    order_liEl.appendChild(document.createTextNode('(' + (order[i].size).toUpperCase() +')'));
+                    let boldText = document.createElement('strong');
+                    boldText.appendChild(document.createTextNode('(' + (order[i].size).toUpperCase() +')'));
+                    order_liEl.appendChild(boldText);
                 }
 
                 // display any sides if it is a combo/lunch dish
@@ -47,12 +49,29 @@ function fetchOrders() {
                 }
 
                 // display the item image
-                const order_imgEl = document.createElement('img');
-                order_imgEl.src = imgDB.get(order[i].name);
-                order_imgEl.className = 'database-images';
-                order_liEl.append(order_imgEl);
+                if ( (order[i].name).includes("Fried Rice") && !order[i].name.includes("House Special")){
+                    const rice_imgEl = document.createElement('img');
+                    const riceType_imgEl = document.createElement('img');
+                    
+                    const riceObj = imgDB.get(order[i].name);
 
-                order_ulEl.appendChild(order_liEl);
+                    rice_imgEl.src = riceObj.riceImg;
+                    rice_imgEl.className = 'database-images';
+
+                    riceType_imgEl.src = riceObj.typeImg;
+                    riceType_imgEl.className = 'database-images';
+                     
+                    order_liEl.append(rice_imgEl, riceType_imgEl);
+                    order_ulEl.appendChild(order_liEl);
+                } else {
+                    const order_imgEl = document.createElement('img');
+                    order_imgEl.src = imgDB.get(order[i].name);
+                    order_imgEl.className = 'database-images';
+                    order_liEl.appendChild(order_imgEl);
+                    order_ulEl.appendChild(order_liEl);
+                }
+
+               
             }
 
             //Finish order button -> removes the entire order
@@ -62,14 +81,13 @@ function fetchOrders() {
             finishOrder_buttonEl.addEventListener('click', ()=>{removeOrder(orderId)} );
 
             //Holds the button
-            const finishOrder_liEl = document.createElement('li');
-
-            //Add button to the end of the order list
-            order_ulEl.appendChild(finishOrder_liEl.appendChild(finishOrder_buttonEl));
-            
             ordersContainer.appendChild(order_ulEl);
-            ordersContainer.appendChild(document.createElement('hr'));
-        
+
+            //Add button to the end of order list
+            const finishOrder_divEl = document.createElement('div');
+            finishOrder_divEl.className = "delete-order-button-container";
+            finishOrder_divEl.appendChild(finishOrder_buttonEl);
+            ordersContainer.append(finishOrder_divEl, document.createElement('hr'));
         }
     });
 }
@@ -110,6 +128,29 @@ function loadImgDatabase(){
     imgDB.set('Fried Baby Shrimp', 'imgURL_DB/friedBabyShrimp.jpg');
     imgDB.set('Mozarella Cheese Sticks', 'imgURL_DB/mozarellaCheeseSticks.jpg');
     imgDB.set('Crab Stick', 'imgURL_DB/crabStick.jpg');
+
+    //soup images
+    imgDB.set('Egg Drop Soup', 'imgURL_DB/eggDropSoup.jpg');
+    imgDB.set('Wonton Soup', 'imgURL_DB/wontonSoup.jpg');
+    imgDB.set('Wonton Egg Drop Soup','imgURL_DB/wontonEggDropSoup.jpg');
+    imgDB.set('Hot & Sour Soup', 'imgURL_DB/hotAndSourSoup.jpg');
+    
+    //fried rice images
+    const PlainFR = {riceImg:'imgURL_DB/friedRice.jpg', typeImg: 'imgURL_DB/onionIcon.jpg'};
+    const VFR = {riceImg:'imgURL_DB/friedRice.jpg', typeImg: 'imgURL_DB/vegetableIcon.jpg'};
+    const PFR = {riceImg:'imgURL_DB/friedRice.jpg', typeImg: 'imgURL_DB/porkIcon.jpg'};
+    const CFR = {riceImg:'imgURL_DB/friedRice.jpg', typeImg: 'imgURL_DB/chickenIcon.jpg'}
+    const SFR = {riceImg:'imgURL_DB/friedRice.jpg', typeImg: 'imgURL_DB/shrimpIcon.jpg'};
+    const BFR = {riceImg:'imgURL_DB/friedRice.jpg', typeImg: 'imgURL_DB/beefIcon.jpg'};
+
+    imgDB.set('Plain Fried Rice', PlainFR);
+    imgDB.set('Vegetable Fried Rice', VFR);
+    imgDB.set('Roast Pork Fried Rice', PFR);
+    imgDB.set('Chicken Fried Rice', CFR);
+    imgDB.set('Shrimp Fried Rice', SFR);
+    imgDB.set('Beef Fried Rice', BFR);
+    imgDB.set('House Special Fried Rice', 'imgURL_DB/houseSpecialFriedRice.jpg');
+
 }
 
 

@@ -1,15 +1,26 @@
-/* format images in the image database */
-.database-images{
-    margin-left: 20px;
+#royal-china-title{
+    color: crimson;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
     padding: 0;
-    height: 200px;
-    width: auto;
+    margin: 0;
+}
+#subtitle{
+    text-align: center;
+    font-style: italic;
+    font-size: 15px;
+    padding: 0;
+    margin: 0;
 }
 
-/* align image with li text */
-.order-li-el{
-    display: flex;
-    align-items: center;
+/* format images in the image database */
+.database-images{
+    margin: 0 10px;
+    margin-bottom: 25px;
+    padding: 0;
+    height: 15vh;
+    width: auto;
 }
 
 .order-ul-el{
@@ -17,4 +28,25 @@
     flex-direction: row;
     align-items: center;
     flex-wrap: wrap;
+}
+
+/* align image with li text */
+.order-li-el{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin:10px;
+}
+
+.delete-order-button-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.delete-order-button{
+    background-color: rgb(98, 155, 98);
+    color: white;
+    font-weight: bold;
 }
