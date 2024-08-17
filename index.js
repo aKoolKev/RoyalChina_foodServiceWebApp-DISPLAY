@@ -49,6 +49,7 @@ function fetchOrders() {
                 }
 
                 // display the item image
+                // FRIED RICE
                 if ( order[i].name.includes("Fried Rice")  &&  !order[i].name.includes("House Special")){
                     const rice_imgEl = document.createElement('img');
                     const riceType_imgEl = document.createElement('img');
@@ -64,7 +65,7 @@ function fetchOrders() {
                     order_liEl.append(rice_imgEl, riceType_imgEl);
                     order_ulEl.appendChild(order_liEl);
                 } else if ( order[i].name.includes("Lo Mein") && !(order[i].name.includes("Plain") || order[i].name.includes("House Special")) ){
-            
+                    //LO MEIN
                     const noodle_imgEl = document.createElement('img');
                     const noodleType_imgEl = document.createElement('img');
                     
@@ -77,6 +78,21 @@ function fetchOrders() {
                     noodleType_imgEl.className = 'database-images';
                     
                     order_liEl.append(noodle_imgEl, noodleType_imgEl);
+                    order_ulEl.appendChild(order_liEl);
+                } else if ( order[i].name.includes("St. Paul")){
+                    //ST PAUL
+                    const stPaul_imgEl = document.createElement('img');
+                    const stPaulType_imgEl = document.createElement('img');
+                    
+                    const stPaulObj = imgDB.get(order[i].name);
+
+                    stPaul_imgEl.src = stPaulObj.stPaulImg;
+                    stPaul_imgEl.className = 'database-images';
+
+                    stPaulType_imgEl.src = stPaulObj.typeImg;
+                    stPaulType_imgEl.className = 'database-images';
+                    
+                    order_liEl.append(stPaul_imgEl, stPaulType_imgEl);
                     order_ulEl.appendChild(order_liEl);
                 } else {
                     const order_imgEl = document.createElement('img');
@@ -166,7 +182,7 @@ function loadImgDatabase(){
     imgDB.set('Beef Fried Rice', BFR);
     imgDB.set('House Special Fried Rice', 'imgURL_DB/houseSpecialFriedRice.jpg');
 
-    //lo mein image;
+    //lo mein images
     const VLM = {noodleImg:'imgURL_DB/loMein.jpg', typeImg: 'imgURL_DB/vegetableIcon.jpg'};
     const PLM = {noodleImg:'imgURL_DB/loMein.jpg', typeImg: 'imgURL_DB/porkIcon.jpg'};
     const CLM = {noodleImg:'imgURL_DB/loMein.jpg', typeImg: 'imgURL_DB/chickenIcon.jpg'}
@@ -180,6 +196,20 @@ function loadImgDatabase(){
     imgDB.set('Shrimp Lo Mein', SLM);
     imgDB.set('Beef Lo Mein', BLM);
     imgDB.set('House Special Lo Mein', 'imgURL_DB/houseSpecialLoMein.jpg');
+
+    //st. paul images
+    const PorkStPaul = {stPaulImg:'imgURL_DB/stPaul.jpg', typeImg: 'imgURL_DB/porkIcon.jpg'};
+    const ChickenStPaul = {stPaulImg:'imgURL_DB/stPaul.jpg', typeImg: 'imgURL_DB/chickenIcon.jpg'}
+    const ShrimpStPaul = {stPaulImg:'imgURL_DB/stPaul.jpg', typeImg: 'imgURL_DB/shrimpIcon.jpg'};
+    const BeefStPaul = {stPaulImg:'imgURL_DB/stPaul.jpg', typeImg: 'imgURL_DB/beefIcon.jpg'};
+    const HouseSpecialStPaul = {stPaulImg:'imgURL_DB/stPaul.jpg', typeImg: 'imgURL_DB/beefIcon.jpg'};
+
+    
+    imgDB.set('Roast Pork St. Paul', PorkStPaul);
+    imgDB.set('Chicken St. Paul', ChickenStPaul);
+    imgDB.set('Shrimp St. Paul', ShrimpStPaul);
+    imgDB.set('Beef St. Paul', BeefStPaul);
+    imgDB.set('House Special St. Paul', HouseSpecialStPaul);
 
 }
 
