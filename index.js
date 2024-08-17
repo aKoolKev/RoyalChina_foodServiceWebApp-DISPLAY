@@ -79,7 +79,7 @@ function fetchOrders() {
                     
                     order_liEl.append(noodle_imgEl, noodleType_imgEl);
                     order_ulEl.appendChild(order_liEl);
-                } else if ( order[i].name.includes("St. Paul")){
+                } else if ( order[i].name.includes("St. Paul") ){
                     //ST PAUL
                     const stPaul_imgEl = document.createElement('img');
                     const stPaulType_imgEl = document.createElement('img');
@@ -199,13 +199,13 @@ function loadImgDatabase(){
 
     //st. paul images
     const PorkStPaul = {stPaulImg:'imgURL_DB/stPaul.jpg', typeImg: 'imgURL_DB/porkIcon.jpg'};
-    const ChickenStPaul = {stPaulImg:'imgURL_DB/stPaul.jpg', typeImg: 'imgURL_DB/chickenIcon.jpg'}
+    const ChickenStPaul = {stPaulImg:'imgURL_DB/stPaul.jpg', typeImg: 'imgURL_DB/chickenIcon.jpg'};
     const ShrimpStPaul = {stPaulImg:'imgURL_DB/stPaul.jpg', typeImg: 'imgURL_DB/shrimpIcon.jpg'};
     const BeefStPaul = {stPaulImg:'imgURL_DB/stPaul.jpg', typeImg: 'imgURL_DB/beefIcon.jpg'};
-    const HouseSpecialStPaul = {stPaulImg:'imgURL_DB/stPaul.jpg', typeImg: 'imgURL_DB/beefIcon.jpg'};
+    const HouseSpecialStPaul = {stPaulImg:'imgURL_DB/stPaul.jpg', typeImg: 'imgURL_DB/houseSpecialIcon.jpg'};
 
     
-    imgDB.set('Roast Pork St. Paul', PorkStPaul);
+    imgDB.set('Pork St. Paul', PorkStPaul);
     imgDB.set('Chicken St. Paul', ChickenStPaul);
     imgDB.set('Shrimp St. Paul', ShrimpStPaul);
     imgDB.set('Beef St. Paul', BeefStPaul);
