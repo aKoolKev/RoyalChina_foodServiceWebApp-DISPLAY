@@ -2,10 +2,6 @@
 
 A web app for Royal China employees to streamline order processing by displaying incoming orders, eliminating the need for verbal communication.
 
-# RoyalChina_foodServiceWebApp-ORDER
-
-A web app for Royal China employees to streamline food orders by sending selected items directly to the display, eliminating the need for verbal communication.
-
 ## Features
 
 - Read data from a cloud database (Google Firebase) and display the data using HTML, CSS, and JS
@@ -23,7 +19,7 @@ A web app for Royal China employees to streamline food orders by sending selecte
 
 or 
 
-Visit URL: `https://akoolkev.github.io/RoyalChina_foodServiceWebApp-DIPSLAY/`
+Visit URL: `https://akoolkev.github.io/RoyalChina_foodServiceWebApp-DISPLAY/`
 
 ## License
 
