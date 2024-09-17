@@ -1,8 +1,30 @@
 # RoyalChina_foodServiceWebApp-DISPLAY
 
-# Purpose
-
 A web app for Royal China employees to streamline order processing by displaying incoming orders, eliminating the need for verbal communication.
 
+# RoyalChina_foodServiceWebApp-ORDER
 
+A web app for Royal China employees to streamline food orders by sending selected items directly to the display, eliminating the need for verbal communication.
 
+## Features
+
+- Read data from a cloud database (Google Firebase) and display the data using HTML, CSS, and JS
+
+## Technologies Used
+
+- HTML5
+- CSS3
+- JS
+- Google Firebase
+
+## How to Use
+
+1. Clone or download the repository: `https://github.com/aKoolKev/RoyalChina_foodServiceWebApp-DISPLAY.git`
+
+or 
+
+Visit URL: `https://akoolkev.github.io/RoyalChina_foodServiceWebApp-DIPSLAY/`
+
+## License
+
+This project is licensed under the MIT License.
